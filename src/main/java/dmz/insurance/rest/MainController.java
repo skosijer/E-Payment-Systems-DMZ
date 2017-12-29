@@ -23,4 +23,47 @@ public class MainController {
 		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviStarosneGrupe", String.class);
 		return response;
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/dobaviRegione")
+	public ResponseEntity<?> dobaviDestinacije() {
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviRegione", String.class);
+		return response;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/dobaviSvrheOsiguranja")
+	public ResponseEntity<?> dobaviSvrheOsiguranja() {
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviSvrheOsiguranja", String.class);
+		return response;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/dobaviPaketeOsiguranja")
+	public ResponseEntity<?> dobaviPaketeOsiguranja() {
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviPaketeOsiguranja", String.class);
+		return response;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/dobaviStarostiStana")
+	public ResponseEntity<?> dobaviStarostiStana() {
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviStarostiStana", String.class);
+		return response;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/dobaviProcenjeneVrednostiStana")
+	public ResponseEntity<?> dobaviProcenjeneVrednostiStana() {
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviProcenjeneVrednostiStana", String.class);
+		return response;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/dobaviOsiguranjaStana")
+	public ResponseEntity<?> dobaviOsiguranjaStana() {
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviOsiguranjaStana", String.class);
+		return response;
+	}
 }
+
