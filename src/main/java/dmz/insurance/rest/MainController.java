@@ -17,10 +17,18 @@ public class MainController {
 	@Value("${corp.url}")
 	private String corpUrl;
 
+	private RestTemplate rt = new RestTemplate();
+
 	@RequestMapping(method = RequestMethod.GET, value = "/dobaviStarosneGrupe")
-	public ResponseEntity<?> fillInsuranceDatabase() {
+	public ResponseEntity<?> dobaviStarosneGrupe() {
+		ResponseEntity<?> response = rt.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviStarosneGrupe", String.class);
+		return response;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/dobaviRegione")
+	public ResponseEntity<?> dobaviRegione() {
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviStarosneGrupe", String.class);
+		ResponseEntity<?> response = rt.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviRegione", String.class);
 		return response;
 	}
 }
