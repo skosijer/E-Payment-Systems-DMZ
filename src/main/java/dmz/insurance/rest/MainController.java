@@ -1,12 +1,10 @@
 package dmz.insurance.rest;
 
+import dmz.insurance.DTO.OsiguranjeDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
@@ -65,6 +63,12 @@ public class MainController {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviOsiguranjaStana", String.class);
 		return response;
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/saveInsurance")
+	public ResponseEntity<?> saveInsurance(@RequestBody OsiguranjeDTO osiguranjeDTO) {
+		System.out.println(osiguranjeDTO);
+		return null;
 	}
 }
 
