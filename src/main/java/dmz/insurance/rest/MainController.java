@@ -26,13 +26,6 @@ public class MainController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/dobaviRegione")
-	public ResponseEntity<?> dobaviRegione() {
-		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<?> response = rt.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviRegione", String.class);
-		return response;
-	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/dobaviRegione")
 	public ResponseEntity<?> dobaviDestinacije() {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<?> response = restTemplate.getForEntity("http://" + this.corpUrl + "/corpMain/dobaviRegione", String.class);
