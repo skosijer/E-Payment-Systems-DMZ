@@ -16,6 +16,7 @@ public class OsiguranjeDTO implements Serializable {
     private String svrhaOsiguranja;
     private int trajanjeOsiguranja;
     private String emailNosioca;
+    private VrstaPlacanja vrstaPlacanja; 
 
     public OsiguranjeDTO() {
     }
@@ -100,7 +101,15 @@ public class OsiguranjeDTO implements Serializable {
         this.emailNosioca = emailNosioca;
     }
 
-    @Override
+    public VrstaPlacanja getVrstaPlacanja() {
+		return vrstaPlacanja;
+	}
+
+	public void setVrstaPlacanja(VrstaPlacanja vrstaPlacanja) {
+		this.vrstaPlacanja = vrstaPlacanja;
+	}
+
+	@Override
     public String toString() {
         return "OsiguranjeDTO{" +
                 "osiguranici=" + osiguranici +
@@ -113,6 +122,7 @@ public class OsiguranjeDTO implements Serializable {
                 ", svrhaOsiguranja='" + svrhaOsiguranja + '\'' +
                 ", trajanjeOsiguranja=" + trajanjeOsiguranja +
                 ", emailNosioca='" + emailNosioca + '\'' +
+                ", vrstaPlacanja='" + vrstaPlacanja + '\'' +
                 '}';
     }
 }
