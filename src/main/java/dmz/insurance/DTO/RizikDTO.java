@@ -1,4 +1,4 @@
-package dmz.insurance.DTOS_POLISA;
+package dmz.insurance.DTO;
 
 public class RizikDTO {
 	

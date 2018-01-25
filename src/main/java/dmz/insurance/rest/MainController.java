@@ -1,37 +1,16 @@
 package dmz.insurance.rest;
 
 import javax.annotation.PostConstruct;
-import javax.net.ssl.SSLContext;
 
-import dmz.insurance.DTOS_POLISA.PolisaDTO;
+import dmz.insurance.DTO.PolisaDTO;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.TrustStrategy;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-import dmz.insurance.DTO.OsiguranjeDTO;
-import dmz.insurance.bean.BuyPolicyDTO;
-
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 
 @RestController
 @CrossOrigin
@@ -140,20 +119,21 @@ public class MainController {
 		return response;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/buyInsurance")
-	public ResponseEntity<?> buyInsurance(@RequestBody OsiguranjeDTO osiguranjeDTO) {
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-
-		HttpEntity<OsiguranjeDTO> request = new HttpEntity<>(osiguranjeDTO);
-		
-		ResponseEntity<BuyPolicyDTO> response = rt.postForEntity( "https://" + this.paymentDMZUrl +
-				"/paymentDMZMain/buyPolicy", request , BuyPolicyDTO.class );
-		
-		System.out.println(response.getBody());
-		return response;	
-		
-	}
+	//OVDE KO JE RADIO NEKA POGLEDA NOVE vrsta_placanja I URADI SA NJIMA
+//	@RequestMapping(method = RequestMethod.POST, value = "/buyInsurance")
+//	public ResponseEntity<?> buyInsurance(@RequestBody OsiguranjeDTO osiguranjeDTO) {
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.setContentType(MediaType.APPLICATION_JSON);
+//
+//		HttpEntity<OsiguranjeDTO> request = new HttpEntity<>(osiguranjeDTO);
+//
+//		ResponseEntity<BuyPolicyDTO> response = rt.postForEntity( "https://" + this.paymentDMZUrl +
+//				"/paymentDMZMain/buyPolicy", request , BuyPolicyDTO.class );
+//
+//		System.out.println(response.getBody());
+//		return response;
+//
+//	}
 	
 	//rest template ne dobije 200ok
 	@ExceptionHandler(HttpClientErrorException.class)

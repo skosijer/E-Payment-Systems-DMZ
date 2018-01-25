@@ -1,4 +1,4 @@
-package dmz.insurance.DTO;
+package dmz.insurance.vrsta_placanja;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
