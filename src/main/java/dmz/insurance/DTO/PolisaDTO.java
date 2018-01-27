@@ -3,6 +3,8 @@ package dmz.insurance.DTO;
 import java.util.ArrayList;
 import java.util.Date;
 
+import dmz.insurance.vrsta_placanja.VrstaPlacanja;
+
 public class PolisaDTO {
 	
 	public ArrayList<OsobaDTO> osiguranici;
@@ -13,6 +15,7 @@ public class PolisaDTO {
 	public int trajanjeOsiguranja;
 	public String vrstaPaketa;
 	public Date pocetakOsiguranja;
+	public VrstaPlacanja vrstaPlacanja; 
 
 
 	@Override
@@ -26,6 +29,7 @@ public class PolisaDTO {
 				", trajanjeOsiguranja=" + trajanjeOsiguranja +
 				", vrstaPaketa='" + vrstaPaketa + '\'' +
 				", pocetakOsiguranja=" + pocetakOsiguranja +
+				", vrstaPlacanja=" + vrstaPlacanja +
 				'}';
 	}
 }

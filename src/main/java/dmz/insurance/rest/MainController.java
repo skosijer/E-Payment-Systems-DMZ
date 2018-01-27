@@ -3,6 +3,8 @@ package dmz.insurance.rest;
 import javax.annotation.PostConstruct;
 
 import dmz.insurance.DTO.PolisaDTO;
+import dmz.insurance.bean.BuyPolicyDTO;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
@@ -120,20 +132,20 @@ public class MainController {
 	}
 
 	//OVDE KO JE RADIO NEKA POGLEDA NOVE vrsta_placanja I URADI SA NJIMA
-//	@RequestMapping(method = RequestMethod.POST, value = "/buyInsurance")
-//	public ResponseEntity<?> buyInsurance(@RequestBody OsiguranjeDTO osiguranjeDTO) {
-//		HttpHeaders headers = new HttpHeaders();
-//		headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//		HttpEntity<OsiguranjeDTO> request = new HttpEntity<>(osiguranjeDTO);
-//
-//		ResponseEntity<BuyPolicyDTO> response = rt.postForEntity( "https://" + this.paymentDMZUrl +
-//				"/paymentDMZMain/buyPolicy", request , BuyPolicyDTO.class );
-//
-//		System.out.println(response.getBody());
-//		return response;
-//
-//	}
+	@RequestMapping(method = RequestMethod.POST, value = "/buyInsurance")
+	public ResponseEntity<?> buyInsurance(@RequestBody PolisaDTO polisaDTO) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+
+		HttpEntity<PolisaDTO> request = new HttpEntity<>(polisaDTO);
+
+		ResponseEntity<BuyPolicyDTO> response = rt.postForEntity( "https://" + this.paymentDMZUrl +
+				"/paymentDMZMain/buyPolicy", request , BuyPolicyDTO.class );
+
+		System.out.println(response.getBody());
+		return response;
+
+	}
 	
 	//rest template ne dobije 200ok
 	@ExceptionHandler(HttpClientErrorException.class)
