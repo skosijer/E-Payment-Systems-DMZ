@@ -3,6 +3,9 @@ package dmz.insurance.rest;
 import javax.annotation.PostConstruct;
 
 import dmz.insurance.DTO.CompletePaymentDTO;
+
+import dmz.insurance.DTO.CenaRequestDTO;
+
 import dmz.insurance.DTO.PolisaDTO;
 import dmz.insurance.bean.BuyPolicyDTO;
 
@@ -47,6 +50,12 @@ public class MainController {
 	}
 
 	private final Log logger = LogFactory.getLog(this.getClass());
+
+	@PostMapping(value = "/cena")
+	public ResponseEntity<?> postCena(@RequestBody CenaRequestDTO cenaReq){
+		ResponseEntity<?> response = rt.postForEntity("https://" + this.corpUrl + "/corpMain/cena", cenaReq, String.class);
+		return response;
+	}
 
 	@PostMapping(value = "/polisa")
 	public ResponseEntity<?> postPolisa(@RequestBody PolisaDTO polisa) {
