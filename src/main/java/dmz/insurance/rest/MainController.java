@@ -2,6 +2,7 @@ package dmz.insurance.rest;
 
 import javax.annotation.PostConstruct;
 
+import dmz.insurance.DTO.CompletePaymentDTO;
 import dmz.insurance.DTO.PolisaDTO;
 import dmz.insurance.bean.BuyPolicyDTO;
 
@@ -146,6 +147,25 @@ public class MainController {
 		return response;
 
 	}
+	
+	//OVDE KO JE RADIO NEKA POGLEDA NOVE vrsta_placanja I URADI SA NJIMA
+		@RequestMapping(method = RequestMethod.POST, value = "/completePayment")
+		public ResponseEntity<?> completePayment(@RequestBody CompletePaymentDTO dto) {
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			
+			dto.transactionIdMerchant = dto.orderId; 
+
+			HttpEntity<CompletePaymentDTO> request = new HttpEntity<>(dto);
+
+			ResponseEntity<String> response = rt.postForEntity( "https://" + this.paymentDMZUrl +
+					"/paymentDMZMain/completePaymentResponse", request , String.class );
+
+			System.out.println(response.getBody());
+			return response;
+
+		}
+	
 	
 	//rest template ne dobije 200ok
 	@ExceptionHandler(HttpClientErrorException.class)
